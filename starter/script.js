@@ -15,10 +15,10 @@ let score = 20;
 let message = document.querySelector('.message').textContent;
 let guess = document.querySelector('.guess').textContent;
 let number = document.querySelector('.number').textContent;
-
+let highscore = 0;
 document.querySelector('.again').addEventListener('click', function (){
     //challenge correction
-    //score = 20;
+    score = 20;
     document.querySelector('.guess').value = ''
     secretNumber = Math.trunc(Math.random() * 20) + 1;
      // MY ATTEMPT
@@ -42,6 +42,11 @@ document.querySelector('.check').addEventListener('click', function (){
         document.querySelector('body').style.backgroundColor = '#60b347';
         document.querySelector('.number').textContent = secretNumber;
         document.querySelector('.number').style.width = '30rem';
+
+        if (score > highscore){
+            highscore = score;
+            document.querySelector('.highscore').textContent = highscore;
+        }
         // When guess is too high
     } else if(guess > secretNumber){
         if(score > 1){
